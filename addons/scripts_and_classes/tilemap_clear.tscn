@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/scripts_and_classes/tilemap_clear.gd" type="Script" id=1]
+
+[node name="TilemapClear" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ClearButton" type="ToolButton" parent="."]
+margin_right = 640.0
+margin_bottom = 22.0
+text = "Clear Tilemap"
+
+[node name="Confirmation" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+margin_top = 26.0
+margin_right = 640.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="Confirmation"]
+margin_left = 273.0
+margin_right = 366.0
+margin_bottom = 14.0
+size_flags_horizontal = 6
+text = "Clear Tilemap?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Confirmation"]
+margin_top = 18.0
+margin_right = 640.0
+margin_bottom = 38.0
+
+[node name="Button" type="Button" parent="Confirmation/HBoxContainer"]
+margin_right = 318.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Yes"
+
+[node name="Button2" type="Button" parent="Confirmation/HBoxContainer"]
+margin_left = 322.0
+margin_right = 640.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "No"
+
+[connection signal="pressed" from="ClearButton" to="." method="_on_ask_clear"]
+[connection signal="pressed" from="Confirmation/HBoxContainer/Button" to="." method="_on_yes"]
+[connection signal="pressed" from="Confirmation/HBoxContainer/Button2" to="." method="_on_no"]
